@@ -22,7 +22,7 @@ export default function TabOneScreen() {
 
 const styles = StyleSheet.create({
   page: {
-    backgroundColor: 'white',
+    backgroundColor: 'black',
     flex: 1,
   }
 });
