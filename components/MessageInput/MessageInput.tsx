@@ -42,12 +42,14 @@ const MessageInput = () => {
       keyboardVerticalOffset={100}
     >
       <View style={styles.inputContainer}>
-        <SimpleLineIcons
-          name="emotsmile"
-          size={25}
-          color="#595959"
-          style={styles.icon}
-        />
+        <Pressable>
+          <SimpleLineIcons
+            name="emotsmile"
+            size={25}
+            color="#595959"
+            style={styles.icon}
+          />
+        </Pressable>
         <TextInput
           style={styles.input}
           placeholder="Signal message..."
@@ -64,7 +66,7 @@ const MessageInput = () => {
         )}
         {message ? (
           <Pressable onPress={onPlusClick}>
-            <AntDesign name="plus" size={26} color="#595959" />
+            <AntDesign name="plus" size={29} color="#595959" />
           </Pressable>
         ) : (
           <SimpleLineIcons
@@ -119,6 +121,11 @@ const styles = StyleSheet.create({
   input: {
     flex: 1,
     marginHorizontal: 5,
+    ...Platform.select({
+      web: {
+        outlineWidth: 0,
+      },
+    }),
   },
   icon: {
     marginHorizontal: 5,
