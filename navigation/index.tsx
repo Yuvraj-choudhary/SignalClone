@@ -12,17 +12,14 @@ import LinkingConfiguration from "./LinkingConfiguration";
 
 import ChatRoomScreen from "../screens/ChatRoomScreen";
 import HomeScreen from "../screens/HomeScreen";
+import Profile from "../screens/Profile";
 
 export default function Navigation({
-  colorScheme,
 }: {
   colorScheme: ColorSchemeName;
 }) {
   return (
-    <NavigationContainer
-      linking={LinkingConfiguration}
-      theme={colorScheme === "dark" ? DarkTheme : DefaultTheme}
-    >
+    <NavigationContainer linking={LinkingConfiguration}>
       <RootNavigator />
     </NavigationContainer>
   );
@@ -41,11 +38,12 @@ function RootNavigator() {
         headerTitleAlign: "center",
       }}
     >
-      <Stack.Screen name="HomeScreen" component={HomeScreen} />
       <Stack.Screen
-        name="ChatRoom"
-        component={ChatRoomScreen}
+        name="HomeScreen"
+        component={HomeScreen}
       />
+      <Stack.Screen name="ChatRoom" component={ChatRoomScreen} />
+      <Stack.Screen name="ProfileScreen" component={Profile} />
     </Stack.Navigator>
   );
 }

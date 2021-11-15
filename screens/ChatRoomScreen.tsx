@@ -5,6 +5,7 @@ import {
   FlatList,
   SafeAreaView,
   Pressable,
+  TouchableOpacity,
 } from "react-native";
 import { useRoute, useNavigation } from "@react-navigation/core";
 import Message from "../components/Message";
@@ -19,9 +20,9 @@ export default function ChatRoomScreen() {
   const route = useRoute();
   const navigation = useNavigation();
   const onPress = () => {
-    navigation.navigate("HomeScreen");
+    navigation.navigate(`HomeScreen`);
   };
-  console.warn(route.params?.id);
+
   navigation.setOptions({
     title: "Yuvraj",
     headersStyle: {
@@ -29,23 +30,25 @@ export default function ChatRoomScreen() {
     },
     headerTintColor: "black",
     headerLeft: () => (
-      <Pressable
+      <TouchableOpacity
         style={{ flexDirection: "row", alignItems: "center" }}
         onPress={onPress}
+        activeOpacity={0.2}
       >
-        <Ionicons
-          name="chevron-back"
+        <AntDesign
+          name="left"
           size={24}
           color="black"
           style={{ marginRight: 7, marginLeft: -8 }}
         />
+
         <Avatar
           rounded
           source={{
             uri: "https://lh3.googleusercontent.com/ogw/ADea4I4MEvhya1pSoZN-3NAh4LhMoHZe4wMeLzfYZosnpg=s83-c-mo",
           }}
         />
-      </Pressable>
+      </TouchableOpacity>
     ),
     headerRight: () => (
       <View

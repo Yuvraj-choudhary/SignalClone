@@ -1,21 +1,26 @@
 import * as React from "react";
-import { Text, Image, View, Pressable } from "react-native";
+import { Text, Image, View, Pressable, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/core";
 import ChatRoomScreen from "../../screens/ChatRoomScreen";
 import styles from "./styles";
 
 export default function ChatRoomItem({ chatRoom }: { chatRoom: any }) {
   const user = chatRoom.users[1];
-
   const navigation = useNavigation();
 
   const onPress = () => {
-    navigation.navigate("ChatRoom", { id: chatRoom.id });
+    navigation.navigate(`ChatRoom`, { id: chatRoom.id });
+  };
+
+  const onProfile = () => {
+    navigation.navigate(`ProfileScreen`, { id: chatRoom.id });
   };
 
   return (
     <Pressable onPress={onPress} style={styles.container}>
-      <Image source={{ uri: user.imageUri }} style={styles.image} />
+      <TouchableOpacity onPress={onProfile}>
+        <Image source={{ uri: user.imageUri }} style={styles.image} />
+      </TouchableOpacity>
 
       {chatRoom.newMessage ? (
         <View style={styles.badgeContainer}>

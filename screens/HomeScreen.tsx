@@ -1,6 +1,6 @@
 import { borderRadius, color } from "@mui/system";
 import * as React from "react";
-import { View, StyleSheet, FlatList, Pressable } from "react-native";
+import { View, StyleSheet, FlatList, Pressable, TouchableOpacity } from 'react-native';
 import { Avatar } from "react-native-elements";
 import ChatRoomItem from "../components/ChatRoomItem/index";
 import chatRoomsData from "../assets/dummy-data/ChatRooms";
@@ -11,6 +11,9 @@ import { AntDesign } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 
 export default function TabOneScreen({ navigation }: { navigation: any }) {
+  const onProfile = () => {
+    navigation.navigate(`ProfileScreen`);
+  };
   useLayoutEffect(() => {
     navigation.setOptions({
       title: "Signal",
@@ -19,14 +22,14 @@ export default function TabOneScreen({ navigation }: { navigation: any }) {
       },
       headerTintColor: "black",
       headerLeft: () => (
-        <View>
+        <Pressable>
           <Avatar
             rounded
             source={{
               uri: "https://lh3.googleusercontent.com/ogw/ADea4I4MEvhya1pSoZN-3NAh4LhMoHZe4wMeLzfYZosnpg=s83-c-mo",
             }}
           />
-        </View>
+        </Pressable>
       ),
       headerRight: () => (
         <View
@@ -53,12 +56,12 @@ export default function TabOneScreen({ navigation }: { navigation: any }) {
         renderItem={({ item }) => <ChatRoomItem chatRoom={item} />}
         showsVerticalScrollIndicator={false}
       />
-      <Pressable style={styles.cameraContainer}>
+      <TouchableOpacity style={styles.cameraContainer}>
         <Entypo name="camera" size={27} color="#595959" />
-      </Pressable>
-      <Pressable style={styles.editContainer}>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.editContainer}>
         <MaterialIcons name="mode-edit" size={27} color="white" />
-      </Pressable>
+      </TouchableOpacity>
     </View>
   );
 }
