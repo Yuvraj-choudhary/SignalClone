@@ -31,7 +31,7 @@ export default [{
     content: 'Why did you reject our offer?',
     createdAt: '2020-10-02T15:40:00.000Z',
   },
-  
+  newMessage: 2,
 }, {
   id: '3',
   users: [{

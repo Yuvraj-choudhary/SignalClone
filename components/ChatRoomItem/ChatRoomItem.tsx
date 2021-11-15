@@ -1,9 +1,10 @@
 import * as React from "react";
 import { Text, Image, View, Pressable } from "react-native";
 import { useNavigation } from "@react-navigation/core";
+import ChatRoomScreen from "../../screens/ChatRoomScreen";
 import styles from "./styles";
 
-export default function ChatRoomItem({ chatRoom }) {
+export default function ChatRoomItem({ chatRoom }: { chatRoom: any }) {
   const user = chatRoom.users[1];
 
   const navigation = useNavigation();
